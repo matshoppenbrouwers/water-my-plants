@@ -9,14 +9,14 @@ function PlantList() {
   const sortedPlants = useMemo(() => {
     return [...state.plants].sort((a, b) => {
       const aDays = Math.floor(
-        (new Date().getTime() - new Date(a.lastWatered).getTime()) / (1000 * 60 * 60 * 24)
+        (new Date().getTime() - new Date(a.last_watered).getTime()) / (1000 * 60 * 60 * 24)
       );
       const bDays = Math.floor(
-        (new Date().getTime() - new Date(b.lastWatered).getTime()) / (1000 * 60 * 60 * 24)
+        (new Date().getTime() - new Date(b.last_watered).getTime()) / (1000 * 60 * 60 * 24)
       );
       
-      const aNeeds = aDays >= a.wateringInterval;
-      const bNeeds = bDays >= b.wateringInterval;
+      const aNeeds = aDays >= a.watering_interval;
+      const bNeeds = bDays >= b.watering_interval;
       
       if (aNeeds && !bNeeds) return -1;
       if (!aNeeds && bNeeds) return 1;
@@ -26,9 +26,9 @@ function PlantList() {
 
   const getWateringStatus = (plant: Plant) => {
     const daysSinceWatered = Math.floor(
-      (new Date().getTime() - new Date(plant.lastWatered).getTime()) / (1000 * 60 * 60 * 24)
+      (new Date().getTime() - new Date(plant.last_watered).getTime()) / (1000 * 60 * 60 * 24)
     );
-    const daysUntilWatering = plant.wateringInterval - daysSinceWatered;
+    const daysUntilWatering = plant.watering_interval - daysSinceWatered;
 
     if (daysUntilWatering <= 0) {
       return {
@@ -69,7 +69,7 @@ function PlantList() {
                       <p className="text-gray-500 text-sm">{plant.species}</p>
                     )}
                     <p className="text-gray-600 mt-2">
-                      Last watered: {formatDistanceToNow(new Date(plant.lastWatered))} ago
+                      Last watered: {formatDistanceToNow(new Date(plant.last_watered))} ago
                     </p>
                     <p className={status.className}>{status.text}</p>
                   </div>
