@@ -5,8 +5,9 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "vite build",
-        "outputDirectory": "dist"
+        "buildCommand": "npm run vercel-build",
+        "outputDirectory": "dist",
+        "installCommand": "npm install"
       }
     }
   ]
