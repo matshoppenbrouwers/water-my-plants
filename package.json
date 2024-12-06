@@ -11,9 +11,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "vite": "^4.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.2",
+    "lucide-react": "^0.268.0"
   }
 }
