@@ -18,8 +18,10 @@ function AddPlant() {
       id: crypto.randomUUID(),
       name: formData.name,
       species: formData.species,
-      lastWatered: new Date(),
-      wateringInterval: Number(formData.wateringInterval),
+      last_watered: new Date().toISOString(),
+      watering_interval: Number(formData.wateringInterval),
+      user_id: '',
+      created_at: new Date().toISOString()
     };
 
     dispatch({ type: 'ADD_PLANT', plant: newPlant });
